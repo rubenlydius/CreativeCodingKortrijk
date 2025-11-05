@@ -1,0 +1,47 @@
+---
+import Markdown from "../../layouts/Markdown.astro";
+
+import { getCollection, render } from "astro:content";
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+    const teamMembers = await getCollection("team");
+    return teamMembers.map((member) => ({
+        params: { id: member.id },
+        props: { teamMember: member },
+    }));
+}
+// 2. For your template, you can get the entry directly from the prop
+const { teamMember } = Astro.props;
+const { Content } = await render(teamMember);
+---
+
+<Markdown>
+    <div slot="top">
+        <a href="/#team">Team</a>
+        <h2><span>{teamMember.data.name}</span></h2>
+    </div>
+    <Content />
+    <div slot="sidebar" class="profile">
+        <img
+            width="300"
+            height="300"
+            src={teamMember.data.pic.src}
+            alt=""
+            class="image"
+        />
+    </div>
+</Markdown>
+
+<style>
+    a {
+        display: block;
+        margin-bottom: var(--sp-m);
+    }
+
+    .profile {
+        display: flex;
+        flex-flow: column;
+        align-items: end;
+        gap: var(--sp-xs);
+    }
+</style>
