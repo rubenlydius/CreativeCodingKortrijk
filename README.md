@@ -11,3 +11,10 @@
 ### Illustrations
 
 <https://pixels.market/illustrations/doodledo?c=technology>
+
+
+### Names 
+
+Bartek Chmielewski
+Mirka Botanska
+Ruben Van Steenberghe
