@@ -34,4 +34,5 @@ export const collections = {
   team: teamCollection,
   foundations: foundationsCollection,
   workshops: workshopsCollection,
+  
 };
