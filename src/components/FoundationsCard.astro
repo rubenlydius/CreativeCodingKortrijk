@@ -1,11 +1,11 @@
 ---
-const { title, description, slug } = Astro.props;
+const { title, description, id } = Astro.props;
 ---
 
 <details>
   <summary>{title}</summary>
   <p>{description}</p>
-  <a href={`/foundations/${slug}`}> Find out how we put this in practice </a>
+  <a href={`/foundation/${id}`}> Find out how we put this in practice </a>
 </details>
 
 <style>
