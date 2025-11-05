@@ -1,4 +1,7 @@
 ---
+import TeamCard from "./TeamCard.astro";
+import { getCollection } from "astro:content";
+const team = await getCollection("team");
 
 ---
 
@@ -30,7 +33,19 @@
     <p>Check these superheroes</p>
   </header>
   <ul>
-    <li>##TEAM MEMBER##</li>
+    {
+      team.map((member) => (
+        <li>
+          <TeamCard
+            name={member.data.name}
+            function={member.data.function}
+            bio={member.data.bio}
+            pic={member.data.pic?.src ?? member.data.pic}
+            id={member.id} 
+          />
+        </li>
+      ))
+    }
   </ul>
 </section>
 
